@@ -1,0 +1,29 @@
+name: Crypto Monitor
+
+on:
+  schedule:
+    # 每 5 分钟运行一次 (你可以改这个时间，但不要低于 5-10分钟)
+    - cron: '*/5 * * * *'
+  workflow_dispatch: # 允许手动点按钮运行测试
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run script
+        env:
+          # 这里会读取我们在 GitHub 设置里填的 Token
+          PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
+        run: python main.py
