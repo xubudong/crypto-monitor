@@ -153,20 +153,20 @@ def main():
 
     # 4. 汇总发送
     if msg_lines:
-		final_html = "<br>".join(msg_lines)
+        final_html = "<br>".join(msg_lines)
 
-		# === 修改开始 ===
-		# 定义东八区 (UTC+8)
-		sha_tz = timezone(timedelta(hours=8))
-		# 获取当前东八区时间
-		bj_time = datetime.now(sha_tz).strftime('%Y-%m-%d %H:%M')
+        # === 修改开始 ===
+        # 定义东八区 (UTC+8)
+        sha_tz = timezone(timedelta(hours=8))
+        # 获取当前东八区时间
+        bj_time = datetime.now(sha_tz).strftime('%Y-%m-%d %H:%M')
 
-		# 拼接到字符串中
-		final_html += f"<br><br>扫描时间: {bj_time} (北京时间)"
-		# === 修改结束 ===
+        # 拼接到字符串中
+        final_html += f"<br><br>扫描时间: {bj_time} (北京时间)"
+        # === 修改结束 ===
 
-		send_wechat(final_html)
-		print("📨 推送已发送")
+        send_wechat(final_html)
+        print("📨 推送已发送")
     else:
         print("😴 本次扫描无符合条件的信号，不打扰。")
 
