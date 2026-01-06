@@ -11,7 +11,8 @@ from datetime import datetime
 SYMBOLS = ['BTC/USD', 'ETH/USD', 'SOL/USD']
 
 # 2. 监控周期
-TIMEFRAMES = ['5m', '15m', '1h', '4h', '1d', '1w']
+# TIMEFRAMES = ['5m', '15m', '1h', '4h', '1d', '1w']
+TIMEFRAMES = ['1h', '4h', '1d', '1w']
 
 # 3. 倒金字塔阈值配置 (核心优化逻辑)
 # 逻辑：小周期噪音大，必须极度严格；大周期趋势稳，可以宽容
